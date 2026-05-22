@@ -1,0 +1,11 @@
+{
+  "folders": [
+    { "path": "AppointmentService" },
+    { "path": "DoctorService" },
+    { "path": "PatientService" }
+  ],
+  "settings": {
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "disabled"
+  }
+}
