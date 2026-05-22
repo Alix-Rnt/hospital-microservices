@@ -1,4 +1,4 @@
-package com.adae.patientservice.exceptions;
+package com.adae.appointmentservice.exceptions;
 
 import java.util.UUID;
 

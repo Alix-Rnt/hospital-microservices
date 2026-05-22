@@ -26,7 +26,7 @@ public class PatientServiceImpl implements PatientService{
     public Patient get(UUID id) {
         return patientRepository.
                     findById(id).
-                    orElseThrow( () -> new PatientNotFoundException("Patient with id " + id + " not found"));
+                    orElseThrow( () -> new PatientNotFoundException(id));
     }
 
     @Override
@@ -37,6 +37,7 @@ public class PatientServiceImpl implements PatientService{
     @Override
     public void update(UUID id, Patient patient) {
         Patient originPatient = this.get(id);
+
         originPatient.setFirstName(patient.getFirstName());
         originPatient.setLastName(patient.getLastName());
         originPatient.setBirthdate(patient.getBirthdate());
@@ -48,6 +49,9 @@ public class PatientServiceImpl implements PatientService{
 
     @Override
     public void delete(UUID id) {
+        patientRepository.
+            findById(id).
+            orElseThrow( () -> new PatientNotFoundException(id));
         patientRepository.delete(id);
     }
     
