@@ -8,6 +8,8 @@ import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.adae.appointmentservice.entities.Appointment;
 import com.adae.appointmentservice.exceptions.AppointmentNotFoundException;
 import com.adae.appointmentservice.exceptions.DoctorNotFoundException;
@@ -17,6 +19,12 @@ import com.adae.appointmentservice.repositories.AppointmentRepository;
 public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final HttpClient httpClient = HttpClient.newHttpClient();
+
+    @Value("${patient.service.url}")
+    private String patientServiceUrl;
+
+    @Value("${doctor.service.url}")
+    private String doctorServiceUrl;
 
     public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
@@ -67,7 +75,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private void validatePatient(Appointment appointment) throws IOException, InterruptedException {
         UUID id = appointment.getPatientId();
         HttpRequest patientRequest = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8081/api/patients/" + id))
+            .uri(URI.create(patientServiceUrl + "/api/patients/" + id))
             .GET()
             .build();
         if (httpClient.send(patientRequest, HttpResponse.BodyHandlers.ofString()).statusCode() == 404) {
@@ -78,7 +86,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private void validateDoctor(Appointment appointment) throws IOException, InterruptedException {
         UUID id = appointment.getDoctorId();
         HttpRequest doctorRequest = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8081/api/doctors/" + id))
+            .uri(URI.create(doctorServiceUrl + "/api/patients/" + id))
             .GET()
             .build();
         if (httpClient.send(doctorRequest, HttpResponse.BodyHandlers.ofString()).statusCode() == 404) {

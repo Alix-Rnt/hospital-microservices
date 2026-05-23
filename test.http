@@ -1,0 +1,42 @@
+### Create a patient
+POST http://localhost:8081/api/patients
+Content-Type: application/json
+
+{
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "birthdate": "1990-05-15",
+    "phoneNumber": "514-123-4567",
+    "email": "jean.dupont@email.com"
+}
+
+###
+
+### Create a doctor
+POST http://localhost:8082/api/doctors
+Content-Type: application/json
+
+{
+    "firstName": "Marie",
+    "lastName": "Tremblay",
+    "specialty": "Cardiology"
+}
+
+###
+
+### Create an appointment
+POST http://localhost:8083/api/appointments
+Content-Type: application/json
+
+{
+    "patientId": "UUID_DU_PATIENT",
+    "doctorId": "UUID_DU_DOCTEUR",
+    "dateTime": "2026-06-01T10:00:00",
+    "reason": "Consultation générale",
+    "status": "SCHEDULED"
+}
+
+###
+
+### Get all appointments
+GET http://localhost:8083/api/appointments

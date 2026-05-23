@@ -1,0 +1,25 @@
+# Start services
+services:
+  patient-service:
+    build: ./PatientService
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  doctor-service:
+    build: ./DoctorService
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  appointment-service:
+    build: ./AppointmentService
+    ports:
+      - "8083:8083"
+    depends_on:
+      - patient-service
+      - doctor-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
