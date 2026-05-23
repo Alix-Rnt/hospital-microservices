@@ -29,10 +29,10 @@ POST http://localhost:8083/api/appointments
 Content-Type: application/json
 
 {
-    "patientId": "UUID_DU_PATIENT",
-    "doctorId": "UUID_DU_DOCTEUR",
+    "patientId": "{PATIENT_UUID}",
+    "doctorId": "{DOCTOR_UUID}",
     "dateTime": "2026-06-01T10:00:00",
-    "reason": "Consultation générale",
+    "reason": "General consultation",
     "status": "SCHEDULED"
 }
 
