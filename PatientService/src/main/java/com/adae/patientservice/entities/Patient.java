@@ -20,14 +20,7 @@ public class Patient {
     private String phoneNumber;
     private String email;
 
-    public Patient(UUID id, LocalDate birthdate, String email, String firstName, String lastName, String phoneNumber) {
-        this.id = id;
-        this.birthdate = birthdate;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-    }
+    public Patient() {}
 
     public UUID getId() {
         return id;
