@@ -10,7 +10,19 @@ Content-Type: application/json
     "email": "jean.dupont@email.com"
 }
 
-###
+### Create a patient
+POST http://localhost:8081/api/patients
+Content-Type: application/json
+
+{
+    "firstName": "Louis",
+    "lastName": "David",
+    "birthdate": "1995-07-02",
+    "phoneNumber": "514-987-6543",
+    "email": "louis.david@email.com"
+}
+
+######
 
 ### Create a doctor
 POST http://localhost:8082/api/doctors
@@ -19,24 +31,30 @@ Content-Type: application/json
 {
     "firstName": "Marie",
     "lastName": "Tremblay",
-    "specialty": "Cardiology"
+    "speciality": "Cardiology"
 }
 
-###
+######
 
 ### Create an appointment
 POST http://localhost:8083/api/appointments
 Content-Type: application/json
 
 {
-    "patientId": "{PATIENT_UUID}",
-    "doctorId": "{DOCTOR_UUID}",
+    "patientId": "1ca6f0f4-624b-42de-907a-4d95cebec3a7",
+    "doctorId": "82e15cc1-af4f-4147-8fe7-92f78af8800b",
     "dateTime": "2026-06-01T10:00:00",
     "reason": "General consultation",
     "status": "SCHEDULED"
 }
 
-###
+######
+
+### Get all patients
+GET http://localhost:8081/api/patients
+
+### Get all doctors
+GET http://localhost:8082/api/doctors
 
 ### Get all appointments
 GET http://localhost:8083/api/appointments
