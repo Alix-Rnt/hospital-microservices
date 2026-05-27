@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.adae.appointmentservice.entities.Appointment;
 
+@Service
 public class AppointmentRepository {
     private final List<Appointment> appointments = new ArrayList<>();
 

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.adae.appointmentservice.entities.Appointment;
 import com.adae.appointmentservice.exceptions.AppointmentNotFoundException;
@@ -16,6 +17,7 @@ import com.adae.appointmentservice.exceptions.DoctorNotFoundException;
 import com.adae.appointmentservice.exceptions.PatientNotFoundException;
 import com.adae.appointmentservice.repositories.AppointmentRepository;
 
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final HttpClient httpClient = HttpClient.newHttpClient();
@@ -86,7 +88,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private void validateDoctor(Appointment appointment) throws IOException, InterruptedException {
         UUID id = appointment.getDoctorId();
         HttpRequest doctorRequest = HttpRequest.newBuilder()
-            .uri(URI.create(doctorServiceUrl + "/api/patients/" + id))
+            .uri(URI.create(doctorServiceUrl + "/api/doctors/" + id))
             .GET()
             .build();
         if (httpClient.send(doctorRequest, HttpResponse.BodyHandlers.ofString()).statusCode() == 404) {

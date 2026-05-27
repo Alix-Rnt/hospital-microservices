@@ -22,14 +22,7 @@ public class Appointment {
     private String reason;
     private AppointmentStatus status;
 
-    public Appointment(UUID id, LocalDateTime dateTime, UUID doctorId, UUID patientId, String reason, AppointmentStatus status) {
-        this.dateTime = dateTime;
-        this.doctorId = doctorId;
-        this.id = id;
-        this.patientId = patientId;
-        this.reason = reason;
-        this.status = status;
-    }
+    public Appointment() {}
 
     public UUID getId() {
         return id;
