@@ -1,5 +1,4 @@
 # hospital-microservices
-> This project is still WIP and may not work properly
 
 A Microservices-based application simulating a hospital basic activity.
 
